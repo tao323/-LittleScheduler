@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block inside_row %}
+<div>
+	<div><a href="{{ url_for('home.index') }}">返回</a></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>开始时间</th>
+				<th>结束时间</th>
+				<th>返回码</th>
+				<th>内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for log in logs %}
+			<tr>
+				<td>{{ log.id }}</td>
+				<td>{{ log.startTime|dateformat("%Y-%m-%d %H:%M")}}</td>
+				<td>{{ log.endTime|dateformat("%Y-%m-%d %H:%M")}}</td>
+				<td>{{ log.code }}</td>
+				<td>{{ log.result }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
